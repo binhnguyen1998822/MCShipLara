@@ -89,13 +89,6 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        $('input[name="datefilter"]').daterangepicker({
-            autoUpdateInput: true,
-            locale: {
-                format: 'Y/MM/DD H:mm:s',
-                cancelLabel: 'Clear'
-            }
-        });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
             $(this).val(picker.startDate.format('Y/MM/DD H:mm:s') + ' - ' + picker.endDate.format('Y/MM/DD H:mm:s'));
         });

@@ -51,6 +51,45 @@
         <div class="row">
             <div class="col">
                 <div class="card shadow">
+                    <form action="" method="GET">
+                        <div class="row">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label class="form-control-label">Thời gian</label>
+                                        <input class="form-control form-control-alternative" type="text" name="datefilter" value="{{$cachesearch->datefilter}}" autocomplete="off"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-control-label">Số điện thoại</label>
+                                        <input type="text" class="form-control form-control-alternative" name="so_dt" autocomplete="off"
+                                               value="{{$cachesearch->so_dt}}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-control-label">Trạng thái</label>
+                                        <select class="form-control form-control-alternative" name="trang_thai">
+                                            <option value="">...</option>
+                                        @foreach($trangthai as $s)
+                                            <option value="{{$s->idtt}}" @if($cachesearch->trang_thai == $s->idtt)selected @endif>{{$s->ten_trangthai}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-control-label">Loại ship</label>
+                                        <select class="form-control form-control-alternative" name="id_loaiship">
+                                            <option value="">...</option>
+                                            @foreach($loaiship as $s)
+                                                <option value="{{$s->idsp}}" @if($cachesearch->id_loaiship == $s->idsp)selected @endif>{{$s->loai_ship}}</option>
+                                                @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <br>
+                                        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
@@ -59,6 +98,7 @@
                             <div class="col text-right">
                                 <a data-toggle="modal"
                                    data-target="#exampleModal" class="btn btn-sm btn-success">Thêm đơn</a>
+                                <a href="{{ url('exportdh') }}?datefilter={{$cachesearch->datefilter}}&so_dt={{$cachesearch->so_dt}}&trang_thai={{$cachesearch->trang_thai}}&id_loaiship={{$cachesearch->id_loaiship}}" class="btn btn-sm btn-success">Xuất</a>
                             </div>
                         </div>
                     </div>

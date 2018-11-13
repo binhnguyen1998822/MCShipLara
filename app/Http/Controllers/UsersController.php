@@ -49,23 +49,24 @@ class UsersController extends Controller
     public function export(Request $request)
     {
 		$datefilter = $request->datefilter;
-		$tg=explode(" - ", $datefilter);
         $name = new DateTime();
-		if($datefilter == null){
-			$donhang = DonhangGallery::join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
-                                ->join('trangthai', 'donhang.trang_thai', '=', 'trangthai.idtt')
-								->join('shipper', 'donhang.id_shipper', '=', 'shipper.id_sp')
-                                ->select('id as Mã đơn','ho_ten as Tên khách hàng','so_dt as Số điện thoại','dia_chi as Địa chỉ','ten_may as Sản phẩm','sp_color as Màu sắc','imei as IMEI','phukien as Phụ kiện','ten_trangthai as Trạng thái','loai_ship as Loại Ship','so_tien as Tổng tiền','ten_user as Người nhập','sp_name as Người giao hàng','created_at as Ngày bán')
-								->get();
-			}else{
-				$donhang = DonhangGallery::join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
-                                ->join('trangthai', 'donhang.trang_thai', '=', 'trangthai.idtt')
-								->join('shipper', 'donhang.id_shipper', '=', 'shipper.id_sp')
-                                ->select('id as Mã đơn','ho_ten as Tên khách hàng','so_dt as Số điện thoại','dia_chi as Địa chỉ','ten_may as Sản phẩm','sp_color as Màu sắc','imei as IMEI','phukien as Phụ kiện','ten_trangthai as Trạng thái','loai_ship as Loại Ship','so_tien as Tổng tiền','ten_user as Người nhập','sp_name as Người giao hàng','created_at as Ngày bán')
-                ->whereBetween('created_at',$tg)
-				->get();
-				
-			}
+        if($datefilter == null){
+            $datefilter = date("1998/12/01 0:00:00").' - ' .date("Y/m/d H:i:s");
+            $tg=explode(" - ", $datefilter);
+        }else{
+            $tg=explode(" - ", $datefilter);
+        }
+
+        $donhang = DonhangGallery::join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
+            ->join('trangthai', 'donhang.trang_thai', '=', 'trangthai.idtt')
+            ->join('shipper', 'donhang.id_shipper', '=', 'shipper.id_sp')
+            ->select('id as Mã đơn','ho_ten as Tên khách hàng','so_dt as Số điện thoại','dia_chi as Địa chỉ','ten_may as Sản phẩm','sp_color as Màu sắc','imei as IMEI','phukien as Phụ kiện','ten_trangthai as Trạng thái','loai_ship as Loại Ship','so_tien as Tổng tiền','ten_user as Người nhập','sp_name as Người giao hàng','created_at as Ngày bán')
+            ->whereBetween('created_at',$tg)
+            ->where('so_dt','LIKE', $request->so_dt)
+            ->where('id_loaiship','LIKE', $request->id_loaiship)
+            ->where('trang_thai','LIKE', $request->trang_thai)
+            ->orderBy('id', 'desc')
+            ->get();
 
             return Excel::create( $name->format('Y-m-d H:i:s'), function ($excel) use ($donhang){
                 $excel->sheet('Excel sheet', function($sheet) use ($donhang) {
@@ -83,59 +84,42 @@ class UsersController extends Controller
     public function donhang(Request $request)
     {
 		$user=Auth::user();
-		$trangthai=$request->trangthai;
-        $tukhoa = $request->tukhoa;
         $datefilter = $request->datefilter;
-		$codnt = $request->codnt;
-        $tg=explode(" - ", $datefilter);
+        if($datefilter == null){
+            $datefilter = date("1998/12/01 0:00:00").' - ' .date("Y/m/d H:i:s");
+            $tg=explode(" - ", $datefilter);
+        }else{
+            $tg=explode(" - ", $datefilter);
+        }
+
         $loaibh=LoaiBH::get();
         $loaiship=Loaiship::get();
         $bank =Bank::get();
 		$coso =Coso::get();
 		$color =Color::get();
 		$dungluong =Dungluong::get();
+		$trangthai =Trangthai::get();
+
+        $cachesearch= $request;
 		if($user->nhom == 'LeTan' ){
-			if($trangthai ==! null){
-				$donhang = DonhangGallery::orderBy('id', 'desc')
-					->where('trang_thai','like',"$trangthai")->where('id_loaiship','3')
-					->join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
-					->paginate(15);	
-			}elseif($datefilter == null){
+			if($datefilter == null){
 				$donhang = DonhangGallery::orderBy('id', 'desc')->where('id_loaiship','3')
 					->join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
 					->paginate(15);
 			}else{
 				$donhang = DonhangGallery::orderBy('id', 'desc')->whereBetween('created_at',$tg)->where('id_loaiship','3')
-					->join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
 					->paginate(15);
 			}
 		}
 		else{
-			if($codnt ==! null){
-				$donhang = DonhangGallery::orderBy('id', 'desc')
-					->where('id_loaiship','<>',"3")
-					->join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
-					->paginate(50);	
-			}elseif($trangthai ==! null){
-				$donhang = DonhangGallery::orderBy('id', 'desc')
-					->where('trang_thai','like',"$trangthai")
-					->join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
-					->paginate(15);	
-			}elseif($datefilter == null){
-				$donhang = DonhangGallery::orderBy('id', 'desc')->where('so_dt',"$tukhoa")
-					->orWhere('ten_may','like',"%$tukhoa")
-					->orWhere('ma_vd','like',"%$tukhoa")
-					->orWhere('ho_ten','like',"%$tukhoa")
-					->orWhere('loai_ship','like',"%$tukhoa")
-					->join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
-					->paginate(15);
-			}else{
-				$donhang = DonhangGallery::orderBy('id', 'desc')->whereBetween('created_at',$tg)
-					->join('loaiship', 'donhang.id_loaiship', '=', 'loaiship.idsp')
-					->paginate(15);
-			}
+            $donhang = DonhangGallery::orderBy('id', 'desc')
+                ->whereBetween('created_at',$tg)
+                ->where('so_dt','LIKE', $request->so_dt)
+                ->where('id_loaiship','LIKE', $request->id_loaiship)
+                ->where('trang_thai','LIKE', $request->trang_thai)
+                ->paginate(15);
 		}
-        return view('donhang',compact('donhang','bank','loaiship','loaibh','coso','color','dungluong','datefilter'));
+        return view('donhang',compact('cachesearch','donhang','bank','loaiship','loaibh','coso','color','dungluong','datefilter','trangthai'));
     }
 
 
