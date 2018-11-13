@@ -103,6 +103,12 @@
      .highcharts-background {
              display: none;
          }
+     #table-scroll {
+         height:500px;
+         overflow:auto;
+     }::-webkit-scrollbar {
+          width: 0px;
+      }
     </style>
     <div class="container-fluid mt--7">
         <div class="row">
@@ -120,7 +126,79 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-xl-6 col-lg-6" style="padding-top: 10px">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Top Sản phẩm bán chạy</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!-- Projects table -->
+                        <div id="table-scroll">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Thiết bị</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Doanh thu</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($topdevicecount['device'] as $i)
+                                    <tr>
+                                        <th scope="row">{{$i->ten_may}}</th>
+                                        <td>{{$i->cnt}}</td>
+                                        <td>{{number_format($i->doanhthu)}} đ</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6" style="padding-top: 10px">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Top Sản phẩm chốt bảo hành</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!-- Projects table -->
+                        <div id="table-scroll">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Thiết bị</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Doanh thu</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($topdevicebhcount['device'] as $i)
+                                    <tr>
+                                        <th scope="row">{{$i->ten_may}}</th>
+                                        <td>{{$i->cnt}}</td>
+                                        <td>{{number_format($i->doanhthu)}} đ</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('js/highcharts_date_range_grouping.css') }}">

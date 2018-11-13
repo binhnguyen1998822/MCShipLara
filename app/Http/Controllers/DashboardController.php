@@ -78,8 +78,10 @@ class DashboardController extends Controller
 
         $chartcount = $this->chartcount($datefilter);
         $chartincome = $this->chartincome($datefilter);
+        $topdevicecount = $this->topdevicecount();
+        $topdevicebhcount = $this->topdevicebhcount();
 
-        return view('dashboard', compact('tongtien', 'charttien', 'chartsl', 'chartdt', 'dh', 'donhuy', 'dangcho', 'xacnhan', 'hoanthanh', 'vnpost', 'facebook', 'hotline', 'tlnfb', 'tlnhl', 'datefilter', 'chartcount', 'chartincome'));
+        return view('dashboard', compact('topdevicebhcount','topdevicecount','tongtien', 'charttien', 'chartsl', 'chartdt', 'dh', 'donhuy', 'dangcho', 'xacnhan', 'hoanthanh', 'vnpost', 'facebook', 'hotline', 'tlnfb', 'tlnhl', 'datefilter', 'chartcount', 'chartincome'));
 
     }
 
@@ -255,6 +257,36 @@ class DashboardController extends Controller
         $return_arr['vnpost'] = '[' . rtrim($return_arr['vnpost'], ',') . ']';
 
         $return_arr['date'] = '[' . rtrim($return_arr['date'], ',') . ']';
+
+        return $return_arr;
+    }
+
+    public function topdevicecount()
+    {
+        $return_arr = [];
+        $return_arr['device'] = '';
+        $return_arr['device'] = DonhangGallery::select('id', 'ten_may','so_tien',
+                DB::raw("count('id') as cnt"),
+            DB::raw("sum(so_tien) as doanhthu"))
+            ->groupBy('ten_may')
+            ->orderBy('cnt', 'DESC')
+            ->take(20)
+            ->get();
+
+        return $return_arr;
+    }
+
+    public function topdevicebhcount()
+    {
+        $return_arr = [];
+        $return_arr['device'] = '';
+        $return_arr['device'] = DonhangGallery::where('id_bh','<>',1)->select('id', 'ten_may','so_tien',
+                DB::raw("count('id') as cnt"),
+            DB::raw("sum(so_tien) as doanhthu"))
+            ->groupBy('ten_may')
+            ->orderBy('cnt', 'DESC')
+            ->take(20)
+            ->get();
 
         return $return_arr;
     }
