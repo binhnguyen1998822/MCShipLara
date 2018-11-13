@@ -210,6 +210,10 @@
                 },
                 ma_the: {
                     validators: {
+                        stringLength: {
+                            min: 5,
+                            message: 'Sai mã thẻ'
+                        },
                         notEmpty: {
                             message: 'Vui lòng cung cấp mã thẻ điện thoại'
                         }
