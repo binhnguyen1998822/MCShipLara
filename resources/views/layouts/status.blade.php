@@ -154,7 +154,7 @@
                                             <div class="form-group">
                                                 <label>Phụ kiện</label>
                                                 <div class="form-group label-floating">
-                                                    <input type="text" value="{{$status->phukien}}" class="form-control" >
+                                                    <input type="text" name="phukien" value="{{$status->phukien}}" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
@@ -162,7 +162,7 @@
                                             <div class="form-group">
                                                 <label>Ghi chú</label>
                                                 <div class="form-group label-floating">
-                                                    <input type="text" value="{{$status->ghi_chu}}" class="form-control" >
+                                                    <input type="text" name="ghi_chu" value="{{$status->ghi_chu}}" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>

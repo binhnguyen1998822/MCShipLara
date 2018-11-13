@@ -256,6 +256,12 @@ class UsersController extends Controller
 		if($request->thang_bh == !null){ 
         $status->thang_bh = $request->thang_bh;
 		}
+		if($request->ghi_chu == !null){
+        $status->ghi_chu = $request->ghi_chu;
+		}
+		if($request->phukien == !null){
+        $status->phukien = $request->phukien;
+		}
 		      
         $status->save();
 		
