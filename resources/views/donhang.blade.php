@@ -275,7 +275,7 @@
 
                                 <div class="col-md-1">
                                     <div class="form-group">
-                                        <label class="form-control-label"></label>
+                                        <label class="form-control-label">Thời gian</label>
                                         <select class="form-control" id="thang_bh" name="thang_bh" disabled>
                                             <option value="6">6 tháng</option>
                                             <option value="12">12 tháng</option>
@@ -303,11 +303,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-
-
                                 </div>
-
-
                                 <div class="col-md-6">
                                     <label class="form-control-label">Phụ kiện</label>
                                     <input type="text" id="dpk" name="phukien" class="form-control"
