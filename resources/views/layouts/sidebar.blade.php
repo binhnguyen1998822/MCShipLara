@@ -90,7 +90,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('home') }}">
-                        <i class="ni ni-chart-bar-32 text-success"></i>Dashboard
+                        <i class="ni ni-chart-bar-32 text-success"></i>Bảng điều khiển
                     </a>
                 </li>
             </ul>
