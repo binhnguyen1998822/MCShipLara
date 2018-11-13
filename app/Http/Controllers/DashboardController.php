@@ -48,7 +48,7 @@ class DashboardController extends Controller
         $hoanthanh = DonhangGallery::where('trang_thai', '4')->whereBetween('created_at', $tg)->count();
         $vnpost = DonhangGallery::where('trang_thai', '6')->whereBetween('created_at', $tg)->count();
         $facebook = DonhangGallery::where('trang_thai', '4')->where('nhom', 'Facebook')->whereBetween('created_at', $tg)->count();
-        $hotline = DonhangGallery::where('trang_thai', '4')->where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
+        $hotline = DonhangGallery::where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
 
         $money = DonhangGallery::where('trang_thai', '4')->whereBetween('created_at', $tg)->sum('so_tien');
         $dh = DB::table('donhang')->whereBetween('created_at', $tg)->count();
@@ -65,10 +65,9 @@ class DashboardController extends Controller
         $mpkfb = $coundpkfb * $sphukien;
         $tlnfb = number_format($tmfb + $mbhvfb + $mpkfb);
 
-        $tongmayhl = DonhangGallery::where('trang_thai', '4')->where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
-        $coundabhthl = DonhangGallery::where('trang_thai', '4')->where('id_bh', '1')->where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
-        $coundabhvhl = DonhangGallery::where('trang_thai', '4')->where('id_bh', '2')->where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
-        $coundpkhl = DonhangGallery::where('trang_thai', '4')->where('id_bh', '3')->where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
+        $tongmayhl = DonhangGallery::where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
+        $coundabhvhl = DonhangGallery::where('id_bh', '2')->where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
+        $coundpkhl = DonhangGallery::where('id_bh', '3')->where('nhom', 'Hotline')->whereBetween('created_at', $tg)->count();
 
         //lợi nhuận
         $tmhl = $tongmayhl * $smayban;
