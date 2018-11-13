@@ -237,6 +237,8 @@
                     '#2dce89',
                     '#f5365c',
                     '#fb6340',
+                    '#60fb00',
+                    '#fb1717',
                 ],
                 plotOptions: {
                     column: {
@@ -297,6 +299,8 @@
                     '#2dce89',
                     '#f5365c',
                     '#fb6340',
+                    '#60fb00',
+                    '#fb1717',
                 ],
                 plotOptions: {
                     column: {
