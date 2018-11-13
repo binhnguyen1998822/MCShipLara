@@ -106,7 +106,7 @@
                             </div>
                             <div class="col text-right">
                                 <a data-toggle="modal"
-                                   data-target="#exampleModal" class="btn btn-sm btn-success">Thêm đơn</a>
+                                   data-target="#exampleModal" class="btn btn-sm btn-success" style="color: #fff">Thêm đơn</a>
                                 <a href="{{ url('exportdh') }}?datefilter={{$cachesearch->datefilter}}&so_dt={{$cachesearch->so_dt}}&trang_thai={{$cachesearch->trang_thai}}&id_loaiship={{$cachesearch->id_loaiship}}" class="btn btn-sm btn-success">Xuất</a>
                             </div>
                         </div>
@@ -167,8 +167,7 @@
                                                data-original-title="{{$v->ghi_chu}}"
                                                class="max-lines">{{$v->ghi_chu}}</a></td>
                                         <td>{{$v->created_at}}</td>
-                                        <td><a href="{{ asset('') }}donhang/{{$v->id}}"><i
-                                                        class="fas fa-ellipsis-v text-success"></i></a></td>
+                                        <td><a href="{{ asset('') }}donhang/{{$v->id}}" class="btn btn-sm btn-success">Sửa</a></td>
                                     </tr>
                                 @endforeach
                             @endif
