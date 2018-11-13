@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm" style="font-weight: bold;">
-                                <span class="text-success mr-2"> </span>
+                                <span class="text-success mr-2">{{$datefilter}} </span>
                             </p>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm" style="font-weight: bold;">
-                                <span class="text-success mr-2">{{$datefilter}} </span>
+                                <span class="text-success mr-2"> </span>
                             </p>
                         </div>
                     </div>
