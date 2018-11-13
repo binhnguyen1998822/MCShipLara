@@ -55,7 +55,7 @@
                         <div class="row">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <label class="form-control-label">Thời gian</label>
                                         <input class="form-control form-control-alternative" type="text" name="datefilter" value="{{$cachesearch->datefilter}}" autocomplete="off"/>
                                     </div>
@@ -82,9 +82,18 @@
                                                 @endforeach
                                         </select>
                                     </div>
+                                    <div class="col-md-2">
+                                        <label class="form-control-label">Loại bảo hành</label>
+                                        <select class="form-control form-control-alternative" name="id_bh">
+                                            <option value="">...</option>
+                                            @foreach($loaibh as $v)
+                                                <option value="{{$v->idbh}}" @if($cachesearch->id_bh == $v->idbh)selected @endif>{{$v->loai_bh}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="col-md-1">
-                                        <br>
-                                        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+                                        <label class="form-control-label">Lọc</label>
+                                        <input type="submit" class="form-control form-control-alternative btn-success" value="Tìm kiếm">
                                     </div>
                                 </div>
                             </div>
@@ -294,7 +303,6 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-
                                     <div class="form-group">
                                         <label class="form-control-label">Loại Ship</label>
                                         <select class="form-control" name="id_loaiship">

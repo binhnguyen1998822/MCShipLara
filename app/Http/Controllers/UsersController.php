@@ -117,6 +117,7 @@ class UsersController extends Controller
                 ->where('so_dt','LIKE', $request->so_dt)
                 ->where('id_loaiship','LIKE', $request->id_loaiship)
                 ->where('trang_thai','LIKE', $request->trang_thai)
+                ->where('id_bh','LIKE', $request->id_bh)
                 ->paginate(15);
 		}
         return view('donhang',compact('cachesearch','donhang','bank','loaiship','loaibh','coso','color','dungluong','datefilter','trangthai'));
