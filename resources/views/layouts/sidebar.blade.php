@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ asset('') }}">
-            <img src="{{ asset('assets/img/brand/logo.webp') }}" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -63,8 +63,8 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="./index.html">
-                            <img src="{{ asset('assets/img/brand/logo.webp') }}">
+                        <a href="">
+                            <img src="{{ asset('assets/img/brand/blue.png') }}">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -90,14 +90,28 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('home') }}">
-                        <i class="ni ni-chart-bar-32 text-primary"></i>Dashboard
+                        <i class="ni ni-chart-bar-32 text-success"></i>Dashboard
                     </a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('donhang') }}">
-                        <i class="ni ni-chart-bar-32 text-primary"></i>Đơn hàng
+                        <i class="ni ni-basket text-success"></i>Đơn hàng
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('report') }}">
+                        <i class="ni ni-sound-wave text-success"></i>Báo cáo
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('mathe') }}">
+                        <i class="ni ni-credit-card text-success"></i>Mã thẻ
                     </a>
                 </li>
             </ul>

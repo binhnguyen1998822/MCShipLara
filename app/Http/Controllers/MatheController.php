@@ -40,13 +40,13 @@ class MatheController extends Controller
 		
 					
 			if($user->super == 1){
-				$mathe = DonhangGallery::orderBy('id', 'desc')->where('id_loaiship','1')->where('so_dt','like',"%$tukhoa")->paginate(15);
+				$mathe = DonhangGallery::orderBy('id', 'desc')->where('id_loaiship','1')->where('ma_the','<>',0)->where('so_dt','like',"%$tukhoa")->paginate(15);
 			}elseif($datefilter == null){
-				$mathe = DonhangGallery::where('id_user',$user->id)->orderBy('id', 'desc')->where('id_loaiship','1')->whereNull('is_mathe')
+				$mathe = DonhangGallery::where('id_user',$user->id)->orderBy('id', 'desc')->where('ma_the','<>',0)->where('id_loaiship','1')->whereNull('is_mathe')
 															->where('so_dt','like',"%$tukhoa")->paginate(15);
 			}
 			else{
-				$mathe = DonhangGallery::where('id_user',$user->id)->orderBy('id', 'desc')->where('id_loaiship','1')->whereNull('is_mathe')->whereBetween('created_at',$tg)
+				$mathe = DonhangGallery::where('id_user',$user->id)->orderBy('id', 'desc')->where('ma_the','<>',0)->where('id_loaiship','1')->whereNull('is_mathe')->whereBetween('created_at',$tg)
 					->paginate(15);
 			}
 
