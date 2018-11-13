@@ -54,7 +54,7 @@
                         <a href="#" class="nav-link" target="_blank">Giới thiệu</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://s-unlock.com/" class="nav-link" target="_blank">Trang chủ</a>
+                        <a href="https://mobilecity.vn/" class="nav-link" target="_blank">Trang chủ</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" target="_blank">MIT License</a>

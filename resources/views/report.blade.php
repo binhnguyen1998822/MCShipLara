@@ -6,15 +6,19 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Báo cáo</h3>
-                        <div class="float-right">
-                            @if(Auth::user()->role !== 'Nhap')
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#myModal">
-                                Nhập
-                            </button>
-                            @endif
-                            <a href="{{ url('export')}}?datefilter=<?php echo $datefilter ?>" class="btn btn-success float-right">Xuất</a>
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Báo cáo</h3>
+                            </div>
+                            <div class="col text-right">
+                                @if(Auth::user()->role !== 'Nhap')
+                                    <a class="btn btn-primary" data-toggle="modal" style="color: #fff"
+                                            data-target="#myModal">
+                                        Nhập
+                                    </a>
+                                @endif
+                                <a href="{{ url('export')}}?datefilter=<?php echo $datefilter ?>" class="btn btn-success float-right">Xuất</a>
+                            </div>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -64,7 +68,7 @@
                                         </td>
                                         <td>{{$v->created_at}}</td>
                                         <td><a href="{{ asset('') }}donhang/{{$v->id}}"><i
-                                                        class="fas fa-ellipsis-v"></i></a></td>
+                                                        class="fas fa-ellipsis-v  text-success"></i></a></td>
                                     </tr>
 
                                 @endforeach

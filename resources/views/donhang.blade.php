@@ -52,17 +52,19 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Hóa đơn</h3>
-                        <div class="float-right">
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#exampleModal">
-                                Thêm đơn
-                            </button>
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Hóa đơn</h3>
+                            </div>
+                            <div class="col text-right">
+                                <a data-toggle="modal"
+                                   data-target="#exampleModal" class="btn btn-sm btn-success">Thêm đơn</a>
+                            </div>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <table id="testTable" class="table align-items-center table-flush">
-                            <thead class="text-primary">
+                            <thead class="text-success">
                             <th>Loại Ship</th>
                             <th>Cơ sở nhận</th>
                             <th>Tên Khách hàng</th>
@@ -117,7 +119,7 @@
                                                class="max-lines">{{$v->ghi_chu}}</a></td>
                                         <td>{{$v->created_at}}</td>
                                         <td><a href="{{ asset('') }}donhang/{{$v->id}}"><i
-                                                        class="fas fa-ellipsis-v"></i></a></td>
+                                                        class="fas fa-ellipsis-v text-success"></i></a></td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -302,7 +304,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button type="submit" name="myButton" class="btn btn-primary">Thêm đơn</button>
+                            <button type="submit" name="myButton" class="btn btn-success">Thêm đơn</button>
                         </div>
                     </form>
                 </div>
