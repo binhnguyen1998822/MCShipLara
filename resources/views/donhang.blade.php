@@ -1,11 +1,7 @@
 @extends('layouts.header')
 @section('content')
     <?php $user = Auth::user();?>
-    <script>
-        $(document).ready(function () {
-            document.getElementById("bardonhang").className = "active";
-        });
-    </script>
+
     <script>
         $(document).ready(function () {
             $('#mvd').attr('en', 'disabled');

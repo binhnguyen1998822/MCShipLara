@@ -119,9 +119,9 @@
 <!-- Argon JS -->
 <script src="{{ asset('assets/js/argon.js?v=1.0.0') }}"></script>
 <script src="{{ asset('js/accounting.js') }}"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
+<script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/daterangepicker.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('js/daterangepicker.css') }}"/>
 <script type="text/javascript" src="{{ asset('source/jquery.fancybox.pack.js?v=2.1.5') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('source/jquery.fancybox.css?v=2.1.5') }}" media="screen"/>
 <script type="text/javascript">
@@ -139,7 +139,30 @@
             autoUpdateInput: false,
             locale: {
                 format: 'Y/MM/DD H:mm:s',
-                cancelLabel: 'Clear'
+                applyLabel: "Áp dụng",
+                cancelLabel: 'Xóa',"daysOfWeek": [
+                    "CN",
+                    "Hai",
+                    "Ba",
+                    "Bốn",
+                    "Năm",
+                    "Sáu",
+                    "Bảy"
+                ],
+                "monthNames": [
+                    "Tháng 1",
+                    "Tháng 2",
+                    "Tháng 3",
+                    "Tháng 4",
+                    "Tháng 5",
+                    "Tháng 6",
+                    "Tháng 7",
+                    "Tháng 8",
+                    "Tháng 9",
+                    "Tháng 10",
+                    "Tháng 11",
+                    "Tháng 12"
+                ],
             }
         });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
@@ -151,7 +174,7 @@
         });
     });
 </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+<script src='{{ asset('js/bootstrapvalidator.min.js') }}'></script>
 <script type="text/javascript">
 
     $(document).ready(function () {
