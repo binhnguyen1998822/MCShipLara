@@ -41,7 +41,7 @@ $(document).ready(function() {
                         <th>Seri</th>
                         <th>Ghi chú</th>
                         @if(Auth::user()->super == 1)<th>Đã nạp</th>@endif
-                        <th>Edit</th>
+                        <th>Sửa</th>
                         </thead>
                         @foreach($mathe as $v)
                             <tbody>
