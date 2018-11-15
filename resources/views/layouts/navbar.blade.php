@@ -30,13 +30,13 @@
                     </div>
                     <a href="{{ url('/profile') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span>My profile</span>
+                        <span>Thống kê</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
                     <a href="{{ url('/logout') }}" class="dropdown-item">
                         <i class="ni ni-user-run"></i>
-                        <span>Logout</span>
+                        <span>Đăng xuất</span>
                     </a>
                 </div>
             </li>
