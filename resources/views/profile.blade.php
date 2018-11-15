@@ -176,13 +176,13 @@
                     name: 'Tỉ lệ',
                     colorByPoint: true,
                     data: [{
-                        name: 'Ship COD :',
+                        name: 'Ship COD ({{$chartcountdh['coundshipcod']}})',
                         y: {{$chartcountdh['coundshipcod']}}
                     }, {
-                        name: 'Ship Xa',
+                        name: 'Ship Xa ({{$chartcountdh['coundshipxa']}})',
                         y: {{$chartcountdh['coundshipxa']}}
                     }, {
-                        name: 'Nội thành',
+                        name: 'Nội thành ({{$chartcountdh['coundshipnt']}})',
                         y: {{$chartcountdh['coundshipnt']}}
                     }]
                 }]
@@ -218,7 +218,7 @@
                     colorByPoint: true,
                     data: [
 					@foreach($coundcoso as $v)
-                        {name: '{{ $v->co_so}}',
+                        {name: '{{ $v->co_so}} ({{ $v->socoso}})',
                         y: {{ $v->socoso}}
                     },@endforeach]
                 }]
