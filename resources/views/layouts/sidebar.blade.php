@@ -110,6 +110,13 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url('post') }}">
+                        <i class="ni ni-sound-wave text-success"></i>VNPost
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
                     <a class="nav-link" href="{{ url('mathe') }}">
                         <i class="ni ni-credit-card text-success"></i>Mã thẻ
                     </a>

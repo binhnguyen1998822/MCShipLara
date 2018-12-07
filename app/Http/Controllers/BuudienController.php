@@ -31,14 +31,24 @@ class BuudienController extends Controller
   
     public function post(Request $request)
     {
-		$loc = $request->loc;
-		if($loc == null){
-			$post = DonhangGallery::orderBy('id', 'desc')->where('id_loaiship','<>','3')->whereNotNull('ma_vd')->paginate(40);
-		}else{
-			$post = DonhangGallery::orderBy('id', 'desc')->where('id_loaiship','<>','3')->where('trang_thai',$loc)->whereNotNull('ma_vd')->paginate(40);
-		}
+        $datefilter = $request->datefilter;
+        if($datefilter == null){
+            $datefilter = date("1998/12/01 0:00:00").' - ' .date("Y/m/d H:i:s");
+            $tg=explode(" - ", $datefilter);
+        }else{
+            $tg=explode(" - ", $datefilter);
+        }
+        $loaiship=Loaiship::get();
+        $trangthai =Trangthai::get();
+        $loaibh=LoaiBH::get();
+        $cachesearch= $request;
+        $post = DonhangGallery::orderBy('id', 'desc')->where('id_loaiship','<>','3')->whereBetween('created_at',$tg)
+            ->where('so_dt','LIKE', $request->so_dt)
+            ->where('id_loaiship','LIKE', $request->id_loaiship)
+            ->where('trang_thai','LIKE', $request->trang_thai)
+            ->where('id_bh','LIKE', $request->id_bh)->whereNotNull('ma_vd')->paginate(40);
 		
-        return view('post',compact('post'));
+        return view('post',compact('post','cachesearch','trangthai','loaiship','loaibh'));
     }
 	
 	    public function checkbox($par = NULL, $par2 = NULL)
