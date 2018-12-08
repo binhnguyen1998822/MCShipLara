@@ -64,22 +64,18 @@
                                                value="{{$cachesearch->so_dt}}">
                                     </div>
                                     <div class="col-md-2">
+                                        <label class="form-control-label">Mã vận đơn</label>
+                                        <input type="text" class="form-control form-control-alternative" name="ma_vd"
+                                               autocomplete="off"
+                                               value="{{$cachesearch->ma_vd}}">
+                                    </div>
+                                    <div class="col-md-2">
                                         <label class="form-control-label">Trạng thái</label>
                                         <select class="form-control form-control-alternative" name="trang_thai">
                                             <option value="">...</option>
                                             @foreach($trangthai as $s)
                                                 <option value="{{$s->idtt}}"
                                                         @if($cachesearch->trang_thai == $s->idtt)selected @endif>{{$s->ten_trangthai}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="form-control-label">Loại ship</label>
-                                        <select class="form-control form-control-alternative" name="id_loaiship">
-                                            <option value="">...</option>
-                                            @foreach($loaiship as $s)
-                                                <option value="{{$s->idsp}}"
-                                                        @if($cachesearch->id_loaiship == $s->idsp)selected @endif>{{$s->loai_ship}}</option>
                                             @endforeach
                                         </select>
                                     </div>

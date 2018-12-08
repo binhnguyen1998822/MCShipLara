@@ -46,6 +46,7 @@ class BuudienController extends Controller
             ->where('so_dt','LIKE', $request->so_dt)
             ->where('id_loaiship','LIKE', $request->id_loaiship)
             ->where('trang_thai','LIKE', $request->trang_thai)
+            ->where('ma_vd','LIKE', $request->ma_vd)
             ->where('id_bh','LIKE', $request->id_bh)->whereNotNull('ma_vd')->paginate(40);
 		
         return view('post',compact('post','cachesearch','trangthai','loaiship','loaibh'));
